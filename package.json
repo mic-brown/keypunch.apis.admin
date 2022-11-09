@@ -1,0 +1,51 @@
+{
+  "name": "keypunch.apis.users",
+  "version": "1.0.0",
+  "description": "KeyPunch Users API",
+  "main": "./src/server.js",
+  "scripts": {
+    "test": "NODE_ENV=production jest --coverage --detectOpenHandles",
+    "build": "babel ./src --copy-files --out-dir ./dist",
+    "start": "NODE_ENV=prod DEBUG=keypunch.apis.template:* node ./dist/server.js",
+    "start-dev": "NODE_ENV=dev DEBUG=keypunch.apis.template:* nodemon --exec babel-node ./src/server.js --delay 6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mic-brown/keypunch.apis.template.git"
+  },
+  "author": "iSolid.NET",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mic-brown/keypunch.apis.template.git/issues"
+  },
+  "homepage": "https://github.com/mic-brown/keypunch.apis.template.git#readme",
+  "dependencies": {
+    "@azure/service-bus": "^7.7.0",
+    "cors": "^2.8.5",
+    "debug": "^4.3.4",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "express-jwt": "^7.7.5",
+    "json-patch": "^0.7.0",
+    "jsonschema": "^1.4.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^4.9.1",
+    "passport": "^0.6.0",
+    "passport-azure-ad": "^4.3.4",
+    "supports-color": "^7.2.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.18.10",
+    "@babel/core": "^7.18.13",
+    "@babel/node": "^7.18.10",
+    "@babel/preset-env": "^7.18.10",
+    "@types/jest": "^29.0.0",
+    "eslint": "^8.23.0",
+    "jest": "^29.0.1",
+    "jest-cli": "^29.0.1",
+    "nodemon": "^2.0.19"
+  },
+  "jest": {
+    "coverageDirectory": "./__coverage__"
+  }
+}

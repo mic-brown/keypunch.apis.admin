@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://isolid.net/keypunch/patch.schema.json",
+  "description": "Schema for a JSON patch",
+  "type": "array",
+  "items": 
+  {
+    "oneOf": [
+      {
+        "$comment": "Add / Replace / Test Operation",
+        "type": "object",
+        "properties": {
+          "op": {
+            "type": "string",
+            "enum": ["add", "replace", "test"],
+            "minLength": 1
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^\/.*$"
+          },
+          "value": {
+
+          }
+        },
+        "required": ["op", "path", "value"]
+      },
+      {
+        "$comment": "Remove Operation",
+        "type": "object",
+        "properties": {
+          "op": {
+            "type": "string",
+            "minLength": 1,
+            "enum": ["remove"]
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^\/.*$"
+          },
+          "required": ["op", "path"]
+        }
+      },
+      {
+        "$comment": "Copy / Move Operation",
+        "type": "object",
+        "properties": {
+          "op": {
+            "type": "string",
+            "enum": ["copy", "move"],
+            "minLength": 1
+          },
+          "from": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^\/.*$"
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^\/.*$"
+          }
+        },
+        "required": ["op", "from", "path"]
+      }
+    ]
+  }
+}
